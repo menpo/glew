@@ -58,18 +58,10 @@ install(FILES
   DESTINATION include/GL
   )
 
-# Leaving the *.pc files out of the install, since we don't use pkgconfig
-# to tell us how to build against GLEW anyhow.
-# install(FILES
-#     glew.pc
-#     glewmx.pc
-#   DESTINATION pkgconfig
-#   )
-
 install(TARGETS
     ${GLEW_NAME}
     ${GLEW_NAME}mx
-  RUNTIME DESTINATION bin
+  RUNTIME DESTINATION lib
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   )
