@@ -6,10 +6,12 @@ mkdir build
 cd build
 
 if %ARCH%==32 (
-    set CMAKE_CONFIG="Release|Win32"
+    set VS110COMNTOOLS=""
+    set VS120COMNTOOLS=""
+    set CMAKE_CONFIG="Release"
 )
 if %ARCH%==64 (
-    set CMAKE_CONFIG="Release|x64"
+    set CMAKE_CONFIG="Release"
 )
 
 cmake .. ^
