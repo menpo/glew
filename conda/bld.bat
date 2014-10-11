@@ -7,6 +7,7 @@ cd build
 
 rem Need to handle Python 3.x case at some point (Visual Studio 2010)
 if %ARCH%==32 (
+  call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat" x86
   if %PY_VER% LSS 3 (
     set CMAKE_GENERATOR="Visual Studio 9 2008"
     set CMAKE_CONFIG="Release|Win32"
