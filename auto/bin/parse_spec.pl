@@ -237,10 +237,12 @@ sub parse_spec($)
                         {
                             # apply typemaps
                             $return =~ s/$regex{types}/$typemap{$1}/og;
-                            $return =~ s/void\*/GLvoid */og;
+                            $return =~ s/GLvoid/void/og;
+                            $return =~ s/void\*/void */og;
                             $parms =~ s/$regex{types}/$typemap{$1}/og;
                             $parms =~ s/$regex{voidtype}/$voidtypemap{$1}/og;
-                            $parms =~ s/ void\* / GLvoid */og;
+                            $parms =~ s/GLvoid/void/og;
+                            $parms =~ s/ void\* / void */og;
                         }
                         # add to functions hash
                         $functions{$name} = {
@@ -307,7 +309,7 @@ my @speclist = ();
 my %extensions = ();
 
 my $ext_dir = shift;
-my $reg_http = "http://www.opengl.org/registry/specs/gl/";
+my $reg_http = "http://www.opengl.org/registry/specs/";
 
 # Take command line arguments or read list from file
 if (@ARGV)
@@ -334,8 +336,26 @@ foreach my $spec (sort @speclist)
 
         my $prefix = $ext;
         $prefix =~ s/^(.+?)(_.+)$/$1/;
-        foreach my $token (sort { hex ${$tokens}{$a} <=> hex ${$tokens}{$b} } keys %{$tokens})
-        {
+        foreach my $token (sort { 
+                if (${$tokens}{$a} eq ${$tokens}{$b}) {
+                        $a cmp $b
+                } else {
+                    if (${$tokens}{$a} =~ /_/) {
+                        if (${$tokens}{$b} =~ /_/) {
+                            $a cmp $b
+                        } else {
+                            -1
+                        }
+                    } else {
+                        if (${$tokens}{$b} =~ /_/) {
+                            1
+                        } else {
+                            hex ${$tokens}{$a} <=> hex ${$tokens}{$b}
+                        }                    
+                    }
+                }
+            } keys %{$tokens})
+            {
             if ($token =~ /^$prefix\_.*/i)
             {
                 print EXT "\t" . $token . " " . ${\%{$tokens}}{$token} . "\n";

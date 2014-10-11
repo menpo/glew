@@ -3,9 +3,7 @@ project(GLEW)
 
 
 set(GLEW_NAME "GLEW")
-set(GLEW_VERSION "@glew_version@")
-string(REGEX REPLACE "^([0-9]+\\.[0-9]+)\\.[0-9]+$" "\\1"
-  GLEW_SOVERSION "${GLEW_VERSION}")
+set(GLEW_VERSION "1.11.0")
 
 # Platform specific differences:
 if(APPLE)
