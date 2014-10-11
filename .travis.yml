@@ -2,8 +2,7 @@ env:
   global:
     - BINSTAR_USER: menpo
   matrix:
-    - PYTHON_VERSION: 2.7
-    - PYTHON_VERSION: 3.4
+    - PYTHON_VERSION: 2.7  # Only need to build one kind because non-Python
 
 install:
 - wget https://raw.githubusercontent.com/jabooth/condaci/v0.2.0/condaci.py -O condaci.py

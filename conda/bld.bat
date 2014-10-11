@@ -1,6 +1,6 @@
 @echo off
 
-robocopy %RECIPE_DIR%\.. . /E
+robocopy %RECIPE_DIR%\.. . /E /NFL
 
 mkdir build
 cd build
