@@ -1,16 +1,22 @@
+sudo: false
+
+os:
+- linux
+#- osx  for now our own build bot is much faster
+
+git:
+  depth: 200
+
 env:
   global:
     - BINSTAR_USER: menpo
-  matrix:
-    - PYTHON_VERSION: 2.7  # Only need to build one kind because non-Python
 
 install:
-- wget https://raw.githubusercontent.com/jabooth/condaci/v0.2.1/condaci.py -O condaci.py
-- python condaci.py setup $PYTHON_VERSION --channel $BINSTAR_USER
-- export PATH=$HOME/miniconda/bin:$PATH
+- wget https://raw.githubusercontent.com/menpo/condaci/v0.4.3/condaci.py -O condaci.py
+- python condaci.py setup
 
 script:
-- python condaci.py auto ./conda --binstaruser $BINSTAR_USER --binstarkey $BINSTAR_KEY
+- ~/miniconda/bin/python condaci.py build ./conda
 
 notifications:
   slack:
