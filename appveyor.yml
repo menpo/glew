@@ -5,6 +5,8 @@ environment:
     BINSTAR_USER: menpo
     BINSTAR_KEY:
       secure: mw1Fz5a5C0lT4CXzsOCADoo/Xa9YymZI3yjVZNR8f5GwYrVAOC2YXxyEG6NaSWZY
+  matrix:
+    - PYTHON_VERSION: 2.7  # Only need 1 as non-Python
 
 matrix:
   fast_finish: true
@@ -14,7 +16,7 @@ platform:
 - x64
 
 init:
-- ps: Start-FileDownload 'https://raw.githubusercontent.com/menpo/condaci/v0.4.3/condaci.py' C:\\condaci.py; echo "Done"
+- ps: Start-FileDownload 'https://raw.githubusercontent.com/menpo/condaci/v0.4.2/condaci.py' C:\\condaci.py; echo "Done"
 - cmd: python C:\\condaci.py setup
 
 install:

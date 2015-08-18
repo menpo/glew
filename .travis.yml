@@ -10,9 +10,11 @@ git:
 env:
   global:
     - BINSTAR_USER: menpo
+  matrix:
+    - PYTHON_VERSION: 2.7  # Only need 1 as non-Python
 
 install:
-- wget https://raw.githubusercontent.com/menpo/condaci/v0.4.3/condaci.py -O condaci.py
+- wget https://raw.githubusercontent.com/menpo/condaci/v0.4.2/condaci.py -O condaci.py
 - python condaci.py setup
 
 script:
