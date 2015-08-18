@@ -3,7 +3,6 @@ http://www.opengl.org/registry/specs/ARB/direct_state_access.txt
 GL_ARB_direct_state_access
 	GL_TEXTURE_TARGET 0x1006
 	GL_QUERY_TARGET 0x82EA
-	GL_TEXTURE_BINDING 0x82EB
 	void glBindTextureUnit (GLuint unit, GLuint texture)
 	void glBlitNamedFramebuffer (GLuint readFramebuffer, GLuint drawFramebuffer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
 	GLenum glCheckNamedFramebufferStatus (GLuint framebuffer, GLenum target)
@@ -41,6 +40,10 @@ GL_ARB_direct_state_access
 	void glGetNamedFramebufferAttachmentParameteriv (GLuint framebuffer, GLenum attachment, GLenum pname, GLint* params)
 	void glGetNamedFramebufferParameteriv (GLuint framebuffer, GLenum pname, GLint* param)
 	void glGetNamedRenderbufferParameteriv (GLuint renderbuffer, GLenum pname, GLint* params)
+	void glGetQueryBufferObjecti64v (GLuint id,GLuint buffer,GLenum pname,GLintptr offset)
+	void glGetQueryBufferObjectiv (GLuint id,GLuint buffer,GLenum pname,GLintptr offset)
+	void glGetQueryBufferObjectui64v (GLuint id,GLuint buffer,GLenum pname,GLintptr offset)
+	void glGetQueryBufferObjectuiv (GLuint id,GLuint buffer,GLenum pname,GLintptr offset)
 	void glGetTextureImage (GLuint texture, GLint level, GLenum format, GLenum type, GLsizei bufSize, void *pixels)
 	void glGetTextureLevelParameterfv (GLuint texture, GLint level, GLenum pname, GLfloat* params)
 	void glGetTextureLevelParameteriv (GLuint texture, GLint level, GLenum pname, GLint* params)
