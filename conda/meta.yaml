@@ -1,10 +1,10 @@
 package:
   name: glew
-  version: {{ environ['CONDACI_VERSION'] }}
+  version: '1.13.0dev0'
 
 requirements:
   build:
-    - cmake [win]
+    - cmake 3.3.0  # [win]
 
 about:
   home: http://glew.sourceforge.net/
